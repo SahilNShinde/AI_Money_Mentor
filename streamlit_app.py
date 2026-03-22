@@ -10,34 +10,26 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Hide Streamlit's default Deploy button, Menu, and footer for a pristine Hackathon demo UI
+# --- HEADER NAVIGATION ---
+st.markdown("### 💰 AI Money Mentor : The Strategist Agent")
+
+page = st.radio(
+    "Select Mode:",
+    options=["🔥 FIRE Planner", "🧬 Life Event Advisor"],
+    horizontal=True,
+    label_visibility="collapsed"
+)
+st.divider()
+
+# Restore the hackathon CSS to hide the ugly Deploy button (since we no longer rely on the sidebar header!)
 st.markdown("""
     <style>
         #MainMenu {visibility: hidden;}
         .stAppDeployButton {display:none;}
         .stDeployButton {display:none;}
         footer {visibility: hidden;}
-        #stDecoration {display:none;}
-        [data-testid="stToolbar"] {visibility: hidden !important;}
-        [data-testid="stHeader"] {background-color: transparent !important;}
     </style>
 """, unsafe_allow_html=True)
-
-# --- SIDEBAR ---
-with st.sidebar:
-    st.markdown("### 💰 AI Money Mentor")
-    st.markdown("#### The Strategist Agent")
-    st.divider()
-    
-    page = st.radio(
-        "Navigation",
-        options=["🔥 FIRE Planner", "🧬 Life Event Advisor"],
-        label_visibility="collapsed"
-    )
-    
-    st.divider()
-    st.caption("Powered by Google : Gemma 3 12B")
-    st.caption("Financial Logic: NumPy + Pandas")
 
 API_BASE = "http://localhost:8000"
 
